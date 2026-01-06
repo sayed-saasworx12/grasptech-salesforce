@@ -1,18 +1,52 @@
-# Salesforce DX Project: Next Steps
+# GraspTech Salesforce DX Project
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+This repository contains Salesforce metadata for the GraspTech platform.
+All development work is version-controlled using Git and follows a CI-based
+validation approach before deployment to higher environments.
 
-## How Do You Plan to Deploy Your Changes?
+---
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+## Project Structure
 
-## Configure Your Salesforce DX Project
+force-app/main/default/ → Salesforce metadata (Apex, LWC, Flows, Config)
+manifest/package.xml → Metadata retrieval / deployment control
+scripts/ → Utility scripts (Apex / SOQL)
+config/ → Scratch org / project config
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
 
-## Read All About It
+---
 
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+##  Git Branch Strategy
+
+| Branch | Purpose |
+|------|--------|
+| `sandbox` | Development / Integration branch |
+| `main` | Production-ready code |
+| `feature/*` | Individual feature or bug fix |
+
+⚠️ Direct commits to `main` are not allowed.
+
+---
+
+## Development Flow
+
+1. Work is done in **DEV sandbox**
+2. Metadata is retrieved using `package.xml`
+3. Changes are committed to a `feature/*` branch
+4. Feature branch is merged into `sandbox`
+5. CI validation runs automatically against **QA org**
+6. After successful validation, code is promoted to `main`
+
+---
+
+## CI (Continuous Integration)
+
+This project uses **GitHub Actions** to validate Salesforce deployments.
+
+### What CI Does
+- Authenticates to QA org
+- Runs **check-only deployment**
+- Executes `RunLocalTests`
+- Blocks deployment if validation fails
+
+CI configuration file:
