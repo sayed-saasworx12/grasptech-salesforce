@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtDataTranObjectTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <dataSourceObject>Netsuite_Data_Ingestion_CaseSol_5DE257EE</dataSourceObject>
+    <extDataTranFieldTemplates>
+        <fullName>CaseNumber</fullName>
+        <dataSourceField>Netsuite_Data_Ingestion_CaseSol_5DE257EE.CaseNumber__c</dataSourceField>
+        <externalDataTranField>CaseNumber</externalDataTranField>
+        <externalName>CaseNumber</externalName>
+        <isDataRequired>false</isDataRequired>
+        <masterLabel>CaseNumber</masterLabel>
+        <sourceFieldName>CaseNumber</sourceFieldName>
+    </extDataTranFieldTemplates>
+    <extDataTranFieldTemplates>
+        <fullName>PrimaryKey</fullName>
+        <dataSourceField>Netsuite_Data_Ingestion_CaseSol_5DE257EE.PrimaryKey__c</dataSourceField>
+        <externalDataTranField>PrimaryKey</externalDataTranField>
+        <externalName>PrimaryKey</externalName>
+        <isDataRequired>false</isDataRequired>
+        <masterLabel>PrimaryKey</masterLabel>
+        <sourceFieldName>PrimaryKey</sourceFieldName>
+    </extDataTranFieldTemplates>
+    <extDataTranFieldTemplates>
+        <fullName>SolutionID</fullName>
+        <dataSourceField>Netsuite_Data_Ingestion_CaseSol_5DE257EE.SolutionID__c</dataSourceField>
+        <externalDataTranField>SolutionID</externalDataTranField>
+        <externalName>SolutionID</externalName>
+        <isDataRequired>false</isDataRequired>
+        <masterLabel>SolutionID</masterLabel>
+        <sourceFieldName>SolutionID</sourceFieldName>
+    </extDataTranFieldTemplates>
+    <externalDataTranObject>CaseSolutionsJunction</externalDataTranObject>
+    <externalName>CaseSolutionsJunction</externalName>
+    <masterLabel>CaseSolutionsJunction</masterLabel>
+    <sourceObjectName>CaseSolutionsJunction</sourceObjectName>
+    <templateVersion>1</templateVersion>
+</ExtDataTranObjectTemplate>
