@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataSourceObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <dataSource>Netsuite_Data_Ingestion_a983cc0c_5290_4e8f_807d_e18ed8a84a3f</dataSource>
+    <externalRecordIdentifier>Netsuite_Data_Ingestion_NetsuiteSolutions_DA0D10BB</externalRecordIdentifier>
+    <masterLabel>Netsuite_Data_Ingestion_NetsuiteSolutions_DA0D10BB</masterLabel>
+    <storageType>LOCAL</storageType>
+    <templateVersion>1</templateVersion>
+</DataSourceObject>

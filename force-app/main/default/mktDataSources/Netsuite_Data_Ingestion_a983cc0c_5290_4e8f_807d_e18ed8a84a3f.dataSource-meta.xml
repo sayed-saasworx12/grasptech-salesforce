@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataSource xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Netsuite_Data_Ingestion_a983cc0c_5290_4e8f_807d_e18ed8a84a3f</masterLabel>
+    <prefix>Net</prefix>
+</DataSource>

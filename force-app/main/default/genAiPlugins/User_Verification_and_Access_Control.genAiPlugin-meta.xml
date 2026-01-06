@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPlugin xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <canEscalate>false</canEscalate>
+    <description>Handles interactions where the user has not provided prechat details or cannot be verified. It verifies the user and restricts access as needed, instructing them to contact a TMC Representative if verification fails. Verified users should never be routed to this topic.</description>
+    <developerName>User_Verification_and_Access_Control</developerName>
+    <genAiPluginInstructions>
+        <description>Once the user is verified, this topic should not re-engage. Instead, direct the user to other topics such as Case Management, General FAQs, and related support areas.</description>
+        <developerName>instructions_0_1759237221145</developerName>
+        <language>en_US</language>
+        <masterLabel>instructions_0_1759237221145</masterLabel>
+        <sortOrder>0</sortOrder>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>If the user is not verified, always respond with: “You are not verified, please connect with your TMC Representative.” Do not request additional details or provide other options.</description>
+        <developerName>instructions_0_1759297845932</developerName>
+        <language>en_US</language>
+        <masterLabel>instructions_0_1759297845932</masterLabel>
+        <sortOrder>0</sortOrder>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>Always use the Verified_User_Filter to check the user’s verification status before proceeding.</description>
+        <developerName>instructions_0_1759297990094</developerName>
+        <language>en_US</language>
+        <masterLabel>instructions_0_1759297990094</masterLabel>
+        <sortOrder>0</sortOrder>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>If no prechat details are available, classify the user as unverified and invoke the &apos;Unverified User&apos; topic to handle verification before proceeding with case-related actions.</description>
+        <developerName>instructions_0_1759301624505</developerName>
+        <language>en_US</language>
+        <masterLabel>instructions_0_1759301624505</masterLabel>
+        <sortOrder>0</sortOrder>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>Always verify the user before routing them to any other topic. If the user is unverified, do not perform any actions related to Case Management and instead guide them through the verification process or restrict access as appropriate.</description>
+        <developerName>instruction_0_1759222292740</developerName>
+        <language xsi:nil="true"/>
+        <masterLabel>instruction_0_1759222292740</masterLabel>
+        <sortOrder>0</sortOrder>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>Set the Sw_Is_Verified__c field on the MessagingSession object to the value of the Verified_User context variable.</description>
+        <developerName>instruction_1_1759222292740</developerName>
+        <language xsi:nil="true"/>
+        <masterLabel>instruction_1_1759222292740</masterLabel>
+        <sortOrder>0</sortOrder>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>If the user is not verified, always respond with: “You are not verified, please connect with your TMC Representative.” Do not request additional details or provide other options.</description>
+        <developerName>instruction_2_1759222292740</developerName>
+        <language xsi:nil="true"/>
+        <masterLabel>instruction_2_1759222292740</masterLabel>
+        <sortOrder>0</sortOrder>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>Always classify and route any query or action request from unverified users to this topic, regardless of the content, until verification is complete</description>
+        <developerName>instruction_3_1759222292740</developerName>
+        <language xsi:nil="true"/>
+        <masterLabel>instruction_3_1759222292740</masterLabel>
+        <sortOrder>0</sortOrder>
+    </genAiPluginInstructions>
+    <language>en_US</language>
+    <masterLabel>Unverified User</masterLabel>
+    <pluginType>Topic</pluginType>
+    <scope>Your role is to verify authentication using the Verified_User_Filter. If the user is not verified, respond with a message to contact a TMC Representative and restrict access. If the user is verified, allow access to Case Management, General FAQs, and other support topics.</scope>
+</GenAiPlugin>

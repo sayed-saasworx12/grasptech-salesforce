@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataStreamDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <areHeadersIncludedInFile>false</areHeadersIncludedInFile>
+    <bulkIngest>false</bulkIngest>
+    <creationType>Custom</creationType>
+    <dataConnector>Netsuite_Data_Ingestion_a983cc0c_5290_4e8f_807d_e18ed8a84a3f</dataConnector>
+    <dataConnectorType>IngestApi</dataConnectorType>
+    <dataExtractMethods>FULL_REFRESH</dataExtractMethods>
+    <dataPlatformDataSetItemName>INGESTAPI</dataPlatformDataSetItemName>
+    <dataSource>Netsuite_Data_Ingestion_a983cc0c_5290_4e8f_807d_e18ed8a84a3f</dataSource>
+    <isLimitedToNewFiles>false</isLimitedToNewFiles>
+    <isMissingFileFailure>false</isMissingFileFailure>
+    <masterLabel>Netsuite Data Ingestion-CaseSolutionsJunction</masterLabel>
+    <mktDataLakeObject>Netsuite_Data_Ingestion_CaseSol_5DE257EE__dll</mktDataLakeObject>
+    <mktDataTranObject>Netsuite_Data_Ingestion_CaseSol_5DE257EE</mktDataTranObject>
+</DataStreamDefinition>

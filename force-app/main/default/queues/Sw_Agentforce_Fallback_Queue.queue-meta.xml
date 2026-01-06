@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>Sw Agentforce Fallback Queue</name>
+    <queueMembers>
+        <users>
+            <user>agentforce_service_agent@00drt00000gyjyv.ext</user>
+            <user>varun@saasworx.ai</user>
+        </users>
+    </queueMembers>
+    <queueRoutingConfig>Sw_Routing_Agentforce</queueRoutingConfig>
+    <queueSobject>
+        <sobjectType>MessagingEndUser</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>MessagingSession</sobjectType>
+    </queueSobject>
+</Queue>

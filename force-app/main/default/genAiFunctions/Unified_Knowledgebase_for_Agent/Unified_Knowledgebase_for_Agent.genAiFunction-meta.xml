@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This action searches for answers in the following order: Knowledge Articles → RetrieverCaseSolutionHybrid. Stop searching as soon as a relevant answer is found and respond using only that source. Ensure the response is accurate, relevant, and concise.</description>
+    <developerName>Unified_Knowledgebase_for_Agent</developerName>
+    <invocationTarget>Unified_Knowledgebase_for_Agent</invocationTarget>
+    <invocationTargetType>generatePromptResponse</invocationTargetType>
+    <isConfirmationRequired>false</isConfirmationRequired>
+    <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+    <localDeveloperName>Unified_Knowledgebase_for_Agent</localDeveloperName>
+    <masterLabel>Unified Knowledgebase for Agent</masterLabel>
+    <progressIndicatorMessage>Agent is Responding....</progressIndicatorMessage>
+</GenAiFunction>

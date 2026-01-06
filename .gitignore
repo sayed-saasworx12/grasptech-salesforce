@@ -1,0 +1,100 @@
+# This file is used for Git repositories to specify intentionally untracked files that Git should ignore. 
+# If you are not using git, you can delete this file. For more information see: https://git-scm.com/docs/gitignore
+# For useful gitignore templates see: https://github.com/github/gitignore
+
+# Salesforce cache
+.sf/
+.sfdx/
+.localdevserver/
+deploy-options.json
+
+# LWC VSCode autocomplete
+**/lwc/jsconfig.json
+
+# LWC Jest coverage reports
+coverage/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependency directories
+node_modules/
+
+# ApexPMD cache
+.pmdCache
+
+# Eslint cache
+.eslintcache
+
+# MacOS system files
+.DS_Store
+
+# Windows system files
+Thumbs.db
+ehthumbs.db
+[Dd]esktop.ini
+$RECYCLE.BIN/
+
+# Local environment variables
+.env
+
+# Python Salesforce Functions
+**/__pycache__/
+**/.venv/
+**/venv/
+
+# ===============================
+# Salesforce SFDX
+# ===============================
+
+# Local SFDX cache
+.sfdx/
+.sfdxOrgInfo/
+
+# Scratch org files
+.scratch-org-def.json
+
+# User specific
+*.user
+
+# Logs
+*.log
+
+# ===============================
+# VS Code
+# ===============================
+.vscode/
+.history/
+
+# ===============================
+# OS files
+# ===============================
+.DS_Store
+Thumbs.db
+
+# ===============================
+# Node (Salesforce CLI uses Node)
+# ===============================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ===============================
+# Environment / Secrets
+# ===============================
+.env
+.env.local
+
+# ===============================
+# Salesforce build artifacts
+# ===============================
+coverage/
+test-result.xml
+
+**/genAiPlannerBundles/
+**/dataSrcDataModelFieldMaps/

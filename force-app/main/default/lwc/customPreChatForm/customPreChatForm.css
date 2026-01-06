@@ -1,0 +1,41 @@
+:host {
+    display: block;
+    flex-direction: column;
+    flex: 1 1 auto;
+    overflow: auto;
+    background: #FFFFFF;
+    padding: 2em;
+    scrollbar-width: thin;
+    scrollbar-color: #c1c1c1 #f5f5f5;
+}
+
+lightning-button {
+    margin-top: 1.5rem;
+    align-self: center;
+    text-align: center;
+    --slds-c-button-brand-color-background: #000000;
+    --slds-c-button-brand-color-border: #000000;
+    --slds-c-button-brand-color-background-hover: #000000;
+    --slds-c-button-brand-color-border-hover: #000000;
+    --slds-c-button-brand-text-color: #ffffff;
+    border-radius: 6px;
+    width: 100%;
+    font-weight: 600;
+}
+c-custom-pre-chat-form-field {
+    display: block;
+    margin-bottom: 1rem;
+}
+
+:host::-webkit-scrollbar {
+    width: 8px;
+}
+
+:host::-webkit-scrollbar-track {
+    background: #f5f5f5;
+}
+
+:host::-webkit-scrollbar-thumb {
+    background-color: #c1c1c1;
+    border-radius: 6px;
+}

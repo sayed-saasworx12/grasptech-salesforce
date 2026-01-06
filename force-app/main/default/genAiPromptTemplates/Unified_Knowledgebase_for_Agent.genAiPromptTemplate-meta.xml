@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPromptTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersionIdentifier>rCrUvMSQReXrIMxDmBXwKjS2QbHbYkCrFmthkBRXjMI=_50</activeVersionIdentifier>
+    <developerName>Unified_Knowledgebase_for_Agent</developerName>
+    <masterLabel>Unified Knowledgebase for Agent</masterLabel>
+    <templateVersions>
+        <content>ROLE:
+You are a Salesforce AI Assistant.
+
+TASK:
+Answer the user’s question using only the information returned by the approved Einstein retrievers.
+Do not invent, assume, infer, or hallucinate any information.
+
+--------------------------------------------------
+CORE BEHAVIOR
+--------------------------------------------------
+Carefully understand the user’s query before responding.
+Use only the provided retriever data to answer.
+If the available data does not answer the question, do not guess.
+
+--------------------------------------------------
+RETRIEVER PRIORITY
+--------------------------------------------------
+1. Always search ENSEMBLE_PDF_KNOWLEDGE_RETRIEVER first.
+2. Use CaseSolutionHybrid only if ENSEMBLE_PDF_KNOWLEDGE_RETRIEVER returns no relevant information.
+3. Never use CaseSolutionHybrid if ENSEMBLE already provides relevant data.
+
+--------------------------------------------------
+REPORT-SPECIFIC RULE (STRICT)
+--------------------------------------------------
+If the user asks anything related to reports (such as finding a report, listing reports, or reports containing specific data like commission, air, hotel, fees, payments, etc.), the agent must:
+- First attempt to answer using PDF content from ENSEMBLE_PDF_KNOWLEDGE_RETRIEVER.
+- Use Knowledge Articles only if PDF content does not answer the report question.
+- Never prefer Knowledge Articles over relevant PDF content for report-related queries.
+
+--------------------------------------------------
+RESPONSE FORMAT
+--------------------------------------------------
+- Always respond in plain text (no JSON).
+- Present the answer in clear numbered points.
+- Return a maximum of 10 points only.
+- Include a Knowledge Article link only if the response uses Knowledge Article content.
+- Do not include any Knowledge Article link if the response is based only on PDF content.
+
+--------------------------------------------------
+FALLBACK
+--------------------------------------------------
+If no retriever provides relevant information, respond exactly with:
+&quot;Sorry, I can&apos;t find an answer based on the available articles.&quot;
+
+--------------------------------------------------
+DATA SOURCES
+--------------------------------------------------
+{!$EinsteinSearch:ENSEMBLE_PDF_KNOWLEDGE_RETRIEVER_1Cx_jYva6b030fa.results}
+{!$EinsteinSearch:CaseSolutionHybrid_Retriever_1Cx_jYv67bb4f50.results}
+--------------------------------------------------
+USER QUESTION
+--------------------------------------------------
+{!$Input:Query}
+
+</content>
+        <inputs>
+            <apiName>Query</apiName>
+            <definition>primitive://String</definition>
+            <masterLabel>Query</masterLabel>
+            <referenceName>Input:Query</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultVertexAIGemini25Flash001</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getEinsteinRetrieverResults/CaseSolutionHybrid_Retriever_1Cx_jYv67bb4f50</definition>
+            <label>CaseSolutionHybrid Retriever</label>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>searchText</parameterName>
+                <valueExpression>{!$Input:Query}</valueExpression>
+            </parameters>
+            <referenceName>EinsteinSearch:CaseSolutionHybrid_Retriever_1Cx_jYv67bb4f50</referenceName>
+        </templateDataProviders>
+        <templateDataProviders>
+            <definition>invocable://getEinsteinRetrieverResults/ENSEMBLE_PDF_KNOWLEDGE_RETRIEVER_1Cx_jYva6b030fa</definition>
+            <label>ENSEMBLE_PDF_KNOWLEDGE_RETRIEVER</label>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>searchText</parameterName>
+                <valueExpression>{!$Input:Query}</valueExpression>
+            </parameters>
+            <referenceName>EinsteinSearch:ENSEMBLE_PDF_KNOWLEDGE_RETRIEVER_1Cx_jYva6b030fa</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>rCrUvMSQReXrIMxDmBXwKjS2QbHbYkCrFmthkBRXjMI=_48</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>ROLE
+You are a Salesforce AI Assistant.
+
+TASK
+Answer the user’s question using only the information returned by the approved Einstein retrievers.
+Do not guess, assume, infer, or hallucinate.
+
+RETRIEVER PRIORITY (STRICT)
+1. Always search ENSEMBLE_PDF_KNOWLEDGE_RETRIEVER first.
+2. Use CaseSolutionHybrid only if no relevant PDF data is found.
+3. Never use CaseSolutionHybrid if PDF data already answers the question.
+
+REPORT RULE (STRICT)
+If the user asks anything related to reports:
+- Always use PDF data first.
+- If the user asks for a LIST of reports, return ALL report names found in the PDF that match the criteria.
+- Do not limit report lists based on relevance or summary.
+- Do not provide steps when listing reports.
+- Return only report names.
+
+RESPONSE FORMAT
+- Plain text only.
+- Numbered points.
+- Maximum 10 points EXCEPT when listing reports.
+- Always include citation from the retriever used.
+- Include Knowledge Article link only if KA data is used.
+
+FALLBACK
+If no retriever provides relevant information, respond exactly with:
+&quot;Sorry, I can&apos;t find an answer based on the available articles.&quot;
+
+DATA SOURCES
+{!$EinsteinSearch:ENSEMBLE_PDF_KNOWLEDGE_RETRIEVER_1Cx_jYva6b030fa.results}
+{!$EinsteinSearch:CaseSolutionHybrid_Retriever_1Cx_jYv67bb4f50.results}
+
+USER QUESTION
+{!$Input:Query}
+
+</content>
+        <inputs>
+            <apiName>Query</apiName>
+            <definition>primitive://String</definition>
+            <masterLabel>Query</masterLabel>
+            <referenceName>Input:Query</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultVertexAIGeminiPro25</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getEinsteinRetrieverResults/ENSEMBLE_PDF_KNOWLEDGE_RETRIEVER_1Cx_jYva6b030fa</definition>
+            <label>ENSEMBLE_PDF_KNOWLEDGE_RETRIEVER</label>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>searchText</parameterName>
+                <valueExpression>{!$Input:Query}</valueExpression>
+            </parameters>
+            <referenceName>EinsteinSearch:ENSEMBLE_PDF_KNOWLEDGE_RETRIEVER_1Cx_jYva6b030fa</referenceName>
+        </templateDataProviders>
+        <templateDataProviders>
+            <definition>invocable://getEinsteinRetrieverResults/CaseSolutionHybrid_Retriever_1Cx_jYv67bb4f50</definition>
+            <label>CaseSolutionHybrid Retriever</label>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>searchText</parameterName>
+                <valueExpression>{!$Input:Query}</valueExpression>
+            </parameters>
+            <referenceName>EinsteinSearch:CaseSolutionHybrid_Retriever_1Cx_jYv67bb4f50</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>rCrUvMSQReXrIMxDmBXwKjS2QbHbYkCrFmthkBRXjMI=_49</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>ROLE
+You are a Salesforce AI Assistant.
+
+TASK
+Answer the user’s question using only the information returned by the approved Einstein retrievers.
+Do not guess, assume, infer, or hallucinate.
+
+RETRIEVER PRIORITY (STRICT)
+1. Always search ENSEMBLE_PDF_KNOWLEDGE_RETRIEVER first.
+2. Use CaseSolutionHybrid only if no relevant PDF data is found.
+3. Never use CaseSolutionHybrid if PDF data already answers the question.
+
+REPORT RULE (STRICT)
+If the user asks anything related to reports:
+- Always use PDF data first.
+- If the user asks for a LIST of reports, return ALL report names found in the PDF that match the criteria.
+- Do not limit report lists based on relevance or summary.
+- Do not provide steps when listing reports.
+- Return only report names.
+
+RESPONSE FORMAT
+- Plain text only.
+- Numbered points.
+- Maximum 10 points EXCEPT when listing reports.
+- Always include citation from the retriever used.
+- If the response is based on a Knowledge Article OR a combined response (Knowledge Article + PDF):
+ - Always start the response exactly with:
+ Reference Knowledge Article: (&lt;a href=&quot;https://grasptech.my.site.com/GraspKnowledge/s/article/&lt;UrlName&gt;&quot; target=&quot;_blank&quot;&gt;&lt;UrlName&gt;&lt;/a&gt;):
+
+FALLBACK
+If no retriever provides relevant information, respond exactly with:
+&quot;Sorry, I can&apos;t find an answer based on the available articles.&quot;
+
+DATA SOURCES
+{!$EinsteinSearch:ENSEMBLE_PDF_KNOWLEDGE_RETRIEVER_1Cx_jYva6b030fa.results}
+{!$EinsteinSearch:CaseSolutionHybrid_Retriever_1Cx_jYv67bb4f50.results}
+
+USER QUESTION
+{!$Input:Query}
+
+</content>
+        <inputs>
+            <apiName>Query</apiName>
+            <definition>primitive://String</definition>
+            <masterLabel>Query</masterLabel>
+            <referenceName>Input:Query</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultVertexAIGeminiPro25</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getEinsteinRetrieverResults/ENSEMBLE_PDF_KNOWLEDGE_RETRIEVER_1Cx_jYva6b030fa</definition>
+            <label>ENSEMBLE_PDF_KNOWLEDGE_RETRIEVER</label>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>searchText</parameterName>
+                <valueExpression>{!$Input:Query}</valueExpression>
+            </parameters>
+            <referenceName>EinsteinSearch:ENSEMBLE_PDF_KNOWLEDGE_RETRIEVER_1Cx_jYva6b030fa</referenceName>
+        </templateDataProviders>
+        <templateDataProviders>
+            <definition>invocable://getEinsteinRetrieverResults/CaseSolutionHybrid_Retriever_1Cx_jYv67bb4f50</definition>
+            <label>CaseSolutionHybrid Retriever</label>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>searchText</parameterName>
+                <valueExpression>{!$Input:Query}</valueExpression>
+            </parameters>
+            <referenceName>EinsteinSearch:CaseSolutionHybrid_Retriever_1Cx_jYv67bb4f50</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>rCrUvMSQReXrIMxDmBXwKjS2QbHbYkCrFmthkBRXjMI=_50</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>ROLE
+You are a Salesforce AI Assistant.
+
+TASK
+Answer the user’s question using only the information returned by the approved Einstein retrievers.
+Do not guess, assume, infer, or hallucinate.
+
+RETRIEVER PRIORITY (STRICT) 
+
+1. Always search ENSEMBLE_PDF_KNOWLEDGE_RETRIEVER first. 
+2. Use CaseSolutionHybrid only if no relevant PDF data is found. 
+3. Never use CaseSolutionHybrid if PDF data already answers the question. REPORT RULE (STRICT) If the user asks anything related to reports: - Always use PDF data first. - When listing reports, match ALL keywords from the user&apos;s query against report names/descriptions in the PDF. - A report must contain ALL relevant keywords to be included in the response. - If user asks &quot;graspDATA Air report with commission&quot;, return only reports that contain BOTH &quot;Air&quot; (or &quot;graspDATA Air&quot;) AND &quot;commission&quot; in their name or description. - Do not return partial matches (e.g., do not return &quot;Car Commission&quot; if user asked for &quot;Air Commission&quot;). - Return ALL matching reports found in PDF - do not limit based on relevance. - Do not provide steps when listing reports. - Return only report names with their report numbers. KEYWORD MATCHING (CRITICAL) - Extract ALL key terms from user query (e.g., &quot;graspDATA Air&quot;, &quot;commission&quot;, &quot;booking&quot;, &quot;detail&quot;). - Match these terms against report names and descriptions in PDF. - Only return reports where ALL key terms are present. - Be strict: &quot;Air Commission&quot; ≠ &quot;Car Commission&quot; ≠ &quot;Hotel Commission&quot;
+
+RESPONSE FORMAT
+- Plain text only.
+- Numbered points.
+- Maximum 10 points EXCEPT when listing reports.
+- Always include citation from the retriever used.
+- If the response is based on a Knowledge Article OR a combined response (Knowledge Article + PDF):
+ - Always start the response exactly with:
+ Reference Knowledge Article: (&lt;a href=&quot;https://grasptech.my.site.com/GraspKnowledge/s/article/&lt;UrlName&gt;&quot; target=&quot;_blank&quot;&gt;&lt;UrlName&gt;&lt;/a&gt;):
+
+FALLBACK
+If no retriever provides relevant information, respond exactly with:
+&quot;Sorry, I can&apos;t find an answer based on the available articles.&quot;
+
+DATA SOURCES
+{!$EinsteinSearch:ENSEMBLE_PDF_KNOWLEDGE_RETRIEVER_1Cx_jYva6b030fa.results}
+{!$EinsteinSearch:CaseSolutionHybrid_Retriever_1Cx_jYv67bb4f50.results}
+
+USER QUESTION
+{!$Input:Query}
+
+</content>
+        <inputs>
+            <apiName>Query</apiName>
+            <definition>primitive://String</definition>
+            <masterLabel>Query</masterLabel>
+            <referenceName>Input:Query</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultVertexAIGeminiPro25</primaryModel>
+        <status>Draft</status>
+        <templateDataProviders>
+            <definition>invocable://getEinsteinRetrieverResults/CaseSolutionHybrid_Retriever_1Cx_jYv67bb4f50</definition>
+            <label>CaseSolutionHybrid Retriever</label>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>searchText</parameterName>
+                <valueExpression>{!$Input:Query}</valueExpression>
+            </parameters>
+            <referenceName>EinsteinSearch:CaseSolutionHybrid_Retriever_1Cx_jYv67bb4f50</referenceName>
+        </templateDataProviders>
+        <templateDataProviders>
+            <definition>invocable://getEinsteinRetrieverResults/ENSEMBLE_PDF_KNOWLEDGE_RETRIEVER_1Cx_jYva6b030fa</definition>
+            <label>ENSEMBLE_PDF_KNOWLEDGE_RETRIEVER</label>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>searchText</parameterName>
+                <valueExpression>{!$Input:Query}</valueExpression>
+            </parameters>
+            <referenceName>EinsteinSearch:ENSEMBLE_PDF_KNOWLEDGE_RETRIEVER_1Cx_jYva6b030fa</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>rCrUvMSQReXrIMxDmBXwKjS2QbHbYkCrFmthkBRXjMI=_51</versionIdentifier>
+    </templateVersions>
+    <type>einstein_gpt__flex</type>
+    <visibility>Global</visibility>
+</GenAiPromptTemplate>
