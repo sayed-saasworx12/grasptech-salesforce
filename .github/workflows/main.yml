@@ -1,0 +1,40 @@
+
+---
+
+## 🚀 Deployment Strategy
+
+- **QA** → Validation only (no auto-deploy)
+- **PROD** → Manual deployment after approval
+- No direct production deployment from local machines
+
+---
+
+## 🔐 Security & Best Practices
+
+- Org credentials are stored as **GitHub Secrets**
+- `.sfdx`, `.env`, and local files are excluded via `.gitignore`
+- Auto-generated Data Cloud / Agentforce metadata is excluded
+
+---
+
+## 🛠 Prerequisites
+
+- Salesforce CLI (`sf`)
+- Node.js (LTS)
+- Git
+- VS Code with Salesforce Extensions
+
+---
+
+## 📚 References
+
+- Salesforce DX Developer Guide
+- Salesforce CLI Command Reference
+- GitHub Actions Documentation
+
+---
+
+## 👤 Maintainer
+
+Sayed Suleman  
+Salesforce Developer
