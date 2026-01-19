@@ -3,7 +3,6 @@
 This repository contains Salesforce metadata for the GraspTech platform.
 All development work is version-controlled using Git and follows a CI-based
 validation approach before deployment to higher environments.
-
 ---
 
 ## Project Structure
